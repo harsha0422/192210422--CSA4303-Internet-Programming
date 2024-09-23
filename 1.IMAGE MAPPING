@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map with Visible Hotspot Points</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Container for the map and details */
+        .map-container {
+            position: relative;
+            max-width: 600px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Info box styling */
+        .info-box {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Visible hotspot points */
+        .hotspot-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .hotspot-point:hover {
+            background-color: orange; /* Change color on hover */
+        }
+
+        /* Tooltip styling */
+        .hotspot-point::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 50%;
+            bottom: 120%;
+            transform: translateX(-50%);
+            padding: 5px 10px;
+            background-color: black;
+            color: white;
+            font-size: 12px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .hotspot-point:hover::after {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Interactive Map with Visible Hotspot Points</h1>
+
+<div class="map-container">
+    <!-- The Map Image -->
+    <img src="doodle-freehand-drawing-of-india-map-free-vector.jpg" alt="Map">
+
+    <!-- Visible points for each hotspot -->
+    <div class="hotspot-point" style="top: 220px; left: 150px;" data-tooltip="Rajasthan" onclick="redirectToWebsite('https://en.wikipedia.org/wiki/Rajasthan')"></div>
+    <div class="hotspot-point" style="top: 380px; left: 300px;" data-tooltip="Andhra Pradesh" onclick="redirectToWebsite('https://en.wikipedia.org/wiki/Andhra_Pradesh')"></div>
+    <div class="hotspot-point" style="top: 200px; left: 480px;" data-tooltip="Arunachal Pradesh" onclick="redirectToWebsite('https://en.wikipedia.org/wiki/Arunachal_Pradesh')"></div>
+</div>
+
+<script>
+    // Function to redirect to a website when a hotspot is clicked
+    function redirectToWebsite(url) {
+        window.location.href = url;
+    }
+</script>
+
+</body>
+</html>
